@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import geometry.Circle;
 import geometry.Shape;
 
 public class CenterGraphicPanel extends JPanel {
@@ -59,15 +60,20 @@ public class CenterGraphicPanel extends JPanel {
 		this.x = x;
 		this.y = y;
 		this.diam = diam;
+		sl.add(new Circle(x, y, diam, c));
 		repaint();
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
 	 	super.paintComponent(g);
+	 	
+	 	for (Shape s : sl) {
+	 		g.setColor(s.getColor());
+		 	g.fillOval(s.getX(), s.getY(), 20, 20);
+	 	}
 	 		 	
-	 	g.setColor(c);
-	 	g.fillOval(x, y, diam, diam);
+	 	
 	}
 	
 	
@@ -76,7 +82,7 @@ public class CenterGraphicPanel extends JPanel {
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			drawCircle(arg0.getX(), arg0.getY(), 15);
+			// drawCircle(arg0.getX(), arg0.getY(), 15);
 		}
 
 		@Override
@@ -109,14 +115,14 @@ public class CenterGraphicPanel extends JPanel {
 
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			// TODO Auto-generated method stub
-			drawCircleColorSpecify(e.getX(), e.getY(), 40, Color.MAGENTA);
+			// TODO Auto-generated method stub drawCircleColorSpecify(e.getX(), e.getY(), 20, Color.MAGENTA);
+			
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
-			drawCircle(e.getX(), e.getY(), 40);
+			drawCircle(e.getX(), e.getY(), 20);
 		}
 		
 	}
