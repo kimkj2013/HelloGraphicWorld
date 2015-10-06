@@ -82,7 +82,7 @@ public class CenterGraphicPanel extends JPanel {
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			// drawCircle(arg0.getX(), arg0.getY(), 15);
+			drawCircle(arg0.getX(), arg0.getY(), 20);
 		}
 
 		@Override
@@ -116,13 +116,13 @@ public class CenterGraphicPanel extends JPanel {
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub drawCircleColorSpecify(e.getX(), e.getY(), 20, Color.MAGENTA);
-			
+			drawCircle(e.getX(), e.getY(), 20);
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
-			drawCircle(e.getX(), e.getY(), 20);
+			
 		}
 		
 	}

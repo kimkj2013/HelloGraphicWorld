@@ -46,7 +46,9 @@ public class Window extends JFrame {
 		JPanel copyright = new JPanel();
 		copyright.setLayout(new FlowLayout());
 		copyright.add(new JLabel("(C) 2015 Kwangju Kim & Miami University. All Rights Reserved."));
-
+		JButton credit = new JButton("Credit");
+		credit.addActionListener(new BottomListener());
+		copyright.add(credit);
 		this.add(copyright, BorderLayout.NORTH);
 	}
 
@@ -60,11 +62,11 @@ public class Window extends JFrame {
 		buttons.setLayout(new java.awt.GridLayout());
 		BottomListener bl = new BottomListener();
 		JButton[] bstore = new JButton[5];
-		bstore[0] = new JButton("Erase all!");
-		bstore[1] = new JButton("Export all!");
-		bstore[2] = new JButton("Import!");
-		bstore[3] = new JButton("Exit!");
-		bstore[4] = new JButton("Credit!");
+		bstore[0] = new JButton("Julia");
+		bstore[1] = new JButton("Mandelbrot");
+		bstore[2] = new JButton("Triangle");
+		bstore[3] = new JButton("Erase");
+		bstore[4] = new JButton("Exit");
 		for (int i = 0; i < 5; i++) {
 			bstore[i].addActionListener(bl);
 			buttons.add(bstore[i]);
@@ -89,41 +91,11 @@ public class Window extends JFrame {
 			String event = arg0.getActionCommand();
 			if (event.startsWith("Erase")) {
 				eraseAll();
+				repaint();
 				return;
 			}
-			if (event.startsWith("Import")) {
-				ArrayList<Shape> from_save = new ArrayList<Shape>();
-				try {
-					FileInputStream fin = new FileInputStream("shape.dat");
-					ObjectInputStream oin = new ObjectInputStream(fin);
-					try {
-						while (true) {
-							from_save.add((Shape) oin.readObject());
-						}
-					} catch (Exception e) {
-						
-					}
-					
-					oin.close();
-				} catch (Exception e) {
-					
-				}
-				return;
-			}
-			if (event.startsWith("Export")) {
-				ArrayList<Shape> to_save = getCompList();
-				try {
-					FileOutputStream fout = new FileOutputStream("shape.dat");
-					ObjectOutputStream out = new ObjectOutputStream(fout);
-					while (! to_save.isEmpty()) {
-						out.writeObject(to_save.remove(0));
-					}
-					out.close();
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(new Frame(), new String("Wrong I/O Error!"),
-							"Error Message", JOptionPane.ERROR_MESSAGE);
-				}
-				return;				
+			if (event.startsWith("Triangle")) {
+				
 			}
 			if (event.startsWith("Exit")) {
 				System.exit(0);
