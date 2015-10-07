@@ -1,9 +1,11 @@
 package graphics;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -19,16 +21,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import geometry.Shape;
+import geometry.Triangle;
 
 public class Window extends JFrame {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private CenterGraphicPanel mainframe;
-	
+
 	public Window() {
 		super("Hello Graphic World");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,10 +48,15 @@ public class Window extends JFrame {
 	private void upperLayout() {
 		JPanel copyright = new JPanel();
 		copyright.setLayout(new FlowLayout());
-		copyright.add(new JLabel("(C) 2015 Kwangju Kim & Miami University. All Rights Reserved."));
+		copyright
+				.add(new JLabel(
+						"(C) 2015 Kwangju Kim & Miami University. All Rights Reserved."));
 		JButton credit = new JButton("Credit");
 		credit.addActionListener(new BottomListener());
 		copyright.add(credit);
+		JButton exit = new JButton("Exit");
+		exit.addActionListener(new BottomListener());
+		copyright.add(exit);
 		this.add(copyright, BorderLayout.NORTH);
 	}
 
@@ -66,7 +74,7 @@ public class Window extends JFrame {
 		bstore[1] = new JButton("Mandelbrot");
 		bstore[2] = new JButton("Triangle");
 		bstore[3] = new JButton("Erase");
-		bstore[4] = new JButton("Exit");
+		bstore[4] = new JButton("Glow");
 		for (int i = 0; i < 5; i++) {
 			bstore[i].addActionListener(bl);
 			buttons.add(bstore[i]);
@@ -74,11 +82,11 @@ public class Window extends JFrame {
 
 		this.add(buttons, BorderLayout.SOUTH);
 	}
-	
+
 	private void eraseAll() {
 		this.mainframe.deleteAll();
 	}
-	
+
 	private ArrayList<Shape> getCompList() {
 		return this.mainframe.getShapeList();
 	}
@@ -95,22 +103,47 @@ public class Window extends JFrame {
 				return;
 			}
 			if (event.startsWith("Triangle")) {
-				
+				eraseAll();
+
+				mainframe.drawTriangle();
+				return;
+			}
+			if (event.startsWith("Julia")) {
+				eraseAll();
+				mainframe.drawJulia();
+				return;
+			}
+			if (event.startsWith("Mandelbrot")) {
+				eraseAll();
+				mainframe.drawMandelbrot();
+				return;
 			}
 			if (event.startsWith("Exit")) {
 				System.exit(0);
 				return;
 			}
-			if (event.startsWith("Credit")) {
-				JOptionPane.showMessageDialog(new Frame(),
-						new String("Designed by Kwangju Kim\nMiami University Class of 2017"
-								+ "\nCollege of Engineering and Computing"
-								+ "\nComputer Science Major\nContact: +1 513 461 5693"
-								+ "\nHomepage: http://www.users.miamioh.edu/kimk3" + "\nEmail: kimk3@miamioh.edu"
-								+ "\nInspired by Professor Norman Krumpe"));
+			if (event.startsWith("Glow")) {
+				if (mainframe.flag)
+					mainframe.flag = false;
+				else
+					mainframe.flag = true;
 				return;
 			}
-			JOptionPane.showMessageDialog(new JFrame(), new String("Something went wrong. Ask the programmer."),
+			if (event.startsWith("Credit")) {
+				JOptionPane
+						.showMessageDialog(
+								new Frame(),
+								new String(
+										"Designed by Kwangju Kim\nMiami University Class of 2017"
+												+ "\nCollege of Engineering and Computing"
+												+ "\nComputer Science Major\nContact: +1 513 461 5693"
+												+ "\nHomepage: http://www.users.miamioh.edu/kimk3"
+												+ "\nEmail: kimk3@miamioh.edu"
+												+ "\nInspired by Professor Norman Krumpe"));
+				return;
+			}
+			JOptionPane.showMessageDialog(new JFrame(), new String(
+					"Something went wrong. Ask the programmer."),
 					"Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 
