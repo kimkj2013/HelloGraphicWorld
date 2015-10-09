@@ -112,11 +112,14 @@ public class CenterGraphicPanel extends JPanel {
 			for (double pixel2 = 0; pixel2 <= this.getHeight(); pixel2++) {
 				double y = map(pixel2, 0, this.getHeight(), Julia.B_START,
 						Julia.B_END);
-
-				if (!Julia.escapes(new Complex(x, y)))
-					drawCircle((int) pixel1, (int) pixel2, 20);
+				// System.out.printf("%.2f, %.2f\n", x, y);
+				boolean w = Julia.escapes(new Complex(x, y));
+				// System.out.println(w);
+				if (!w)
+					drawCircle((int) pixel1, (int) pixel2, 10);
 			}
 		}
+		System.out.println("Done drawing");
 		repaint();
 	}
 
@@ -128,11 +131,14 @@ public class CenterGraphicPanel extends JPanel {
 			for (double pixel2 = 0; pixel2 <= this.getHeight(); pixel2++) {
 				double y = map(pixel2, 0, this.getHeight(), Mandelbrot.B_START,
 						Mandelbrot.B_END);
-
-				if (!Mandelbrot.escapes(new Complex(x, y), new Complex(0, 0)))
-					drawCircle((int) pixel1, (int) pixel2, 20);
+				// System.out.printf("%.2f, %.2f\n", x, y);
+				boolean w = Mandelbrot.escapes(new Complex(x, y), new Complex(0, 0));
+				// System.out.println(w);
+				if (!w)
+					drawCircle((int) pixel1, (int) pixel2, 10);
 			}
 		}
+		System.out.println("Done drawing");
 		repaint();
 	}
 
@@ -151,10 +157,13 @@ public class CenterGraphicPanel extends JPanel {
 
 	}
 
+	private static double map1(double x, double a, double b, double c, double d) {
+		return c + ((x - a) * (d - c)) / (b - a);
+	}
+	
 	public static double map(double value, double start1, double stop1,
 			double start2, double stop2) {
-		return start2 + (start2 - stop2)
-				* ((value - start1) / (stop1 - start1));
+		return map1(value, start1, stop1, start2, stop2);
 	}
 
 	public class CursorListener1 implements MouseListener {

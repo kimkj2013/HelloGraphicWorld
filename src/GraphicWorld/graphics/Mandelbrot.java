@@ -36,6 +36,7 @@ public class Mandelbrot {
 				return true;
 			}
 			z = f(z, c);
+			// System.out.println(z);
 		}
 		return false;
 	}

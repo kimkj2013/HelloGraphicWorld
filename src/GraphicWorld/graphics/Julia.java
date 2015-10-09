@@ -41,6 +41,7 @@ public class Julia {
 				return true;
 			}
 			z = f(z);
+			// System.out.println(z);
 		}
 		return false;
 	}
