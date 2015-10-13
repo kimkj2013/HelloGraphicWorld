@@ -1,12 +1,8 @@
 package geometry;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JPanel;
 
 public class Triangle {
 
@@ -17,9 +13,9 @@ public class Triangle {
 
 	// public static final int DIAM = 10;
 	
-	public Triangle() {
+	public Triangle(int x, int y) {
 		setupVertices();
-		setupRandomPoints();
+		setupRandomPoints(x, y);
 		for (int i = 0; i < BAILOUT; i++) {
 			nextRandomPoint();
 		}
@@ -55,20 +51,20 @@ public class Triangle {
 	 */
 	public void setupVertices() {
 		vertex = new Point[3];
-		vertex[0] = new Point(3, 390);
-		vertex[1] = new Point(235, 10);
-		vertex[2] = new Point(465, 390);
+		vertex[0] = new Point(3, 465);
+		vertex[1] = new Point(300, 12);
+		vertex[2] = new Point(575, 465);
 	}
 
 	/*
 	 * Initialize the ArrayList with the first random point
 	 */
-	public void setupRandomPoints() {
+	public void setupRandomPoints(int randx, int randy) {
 		rand = new ArrayList<Point>();
 
 		Random r = new Random();
-		int x = r.nextInt(450);
-		int y = r.nextInt(400);
+		int x = r.nextInt(randx);
+		int y = r.nextInt(randy);
 
 		rand.add(new Point(x, y));
 	}

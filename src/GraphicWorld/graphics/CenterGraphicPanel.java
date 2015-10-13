@@ -1,7 +1,6 @@
 package graphics;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -30,10 +29,6 @@ public class CenterGraphicPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private Color c;
-	private int x;
-	private int y;
-	private int diam;
-	
 	private int mouseX;
 	private int mouseY;
 
@@ -42,9 +37,6 @@ public class CenterGraphicPanel extends JPanel {
 	private final ArrayList<Shape> sl;
 
 	public CenterGraphicPanel() {
-		this.x = 0;
-		this.y = 0;
-		this.diam = 0;
 		this.c = new Color(0, 0, 0);
 		this.mouseX = 0;
 		this.mouseY = 0;
@@ -73,9 +65,6 @@ public class CenterGraphicPanel extends JPanel {
 
 	private void drawCircleColorSpecify(int x, int y, int diam, Color c) {
 		this.c = c;
-		this.x = x;
-		this.y = y;
-		this.diam = diam;
 		sl.add(new Circle(x, y, diam, c));
 		repaint();
 	}
@@ -143,7 +132,7 @@ public class CenterGraphicPanel extends JPanel {
 	}
 
 	public void drawTriangle() {
-		Triangle t = new Triangle();
+		Triangle t = new Triangle(this.getWidth(), this.getHeight());
 		Point[] p = t.getVertex();
 		ArrayList<Point> q = t.getPoints();
 

@@ -1,27 +1,16 @@
 package graphics;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import geometry.Shape;
-import geometry.Triangle;
 
 public class Window extends JFrame {
 
@@ -85,10 +74,6 @@ public class Window extends JFrame {
 
 	private void eraseAll() {
 		this.mainframe.deleteAll();
-	}
-
-	private ArrayList<Shape> getCompList() {
-		return this.mainframe.getShapeList();
 	}
 
 	public class BottomListener implements ActionListener {
