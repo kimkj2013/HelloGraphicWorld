@@ -13,7 +13,7 @@ public class Julia {
 	
 	private static final double MAX_RADIUS = 2.0;
 	
-	private static final Complex C = new Complex(0, 0);
+	private static final Complex C = new Complex(-0.4, 0.6);
 	
 	static final double A_START = -2.0;
 	static final double A_END = 2.0;

@@ -132,7 +132,7 @@ public class CenterGraphicPanel extends JPanel {
 				double y = map(pixel2, 0, this.getHeight(), Mandelbrot.B_START,
 						Mandelbrot.B_END);
 				// System.out.printf("%.2f, %.2f\n", x, y);
-				boolean w = Mandelbrot.escapes(new Complex(x, y), new Complex(0, 0));
+				boolean w = Mandelbrot.escapes(new Complex(0, 0), new Complex(x, y));
 				// System.out.println(w);
 				if (!w)
 					drawCircle((int) pixel1, (int) pixel2, 10);
