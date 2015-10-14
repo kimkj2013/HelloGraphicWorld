@@ -4,15 +4,22 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * 
+ * This class represents fractal traingle
+ * 
+ * @author Kwangju Kim
+ *
+ */
 public class Triangle {
 
 	public static final int BAILOUT = 5000;
-	
+
 	private Point[] vertex;
 	private ArrayList<Point> rand;
 
 	// public static final int DIAM = 10;
-	
+
 	public Triangle(int x, int y) {
 		setupVertices();
 		setupRandomPoints(x, y);
@@ -20,11 +27,11 @@ public class Triangle {
 			nextRandomPoint();
 		}
 	}
-	
+
 	public Point[] getVertex() {
 		return this.vertex;
 	}
-	
+
 	public ArrayList<Point> getPoints() {
 		return this.rand;
 	}
@@ -68,7 +75,7 @@ public class Triangle {
 
 		rand.add(new Point(x, y));
 	}
-	
+
 	public void clear() {
 		this.rand = null;
 		this.vertex = null;

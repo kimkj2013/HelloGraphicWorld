@@ -4,7 +4,9 @@ import java.awt.Color;
 
 /**
  * 
- * @author kimk3
+ * An abstract shape object
+ * 
+ * @author Kwangju Kim
  *
  */
 public abstract class Shape {
@@ -21,7 +23,7 @@ public abstract class Shape {
 	 * 
 	 */
 	protected Color c;
-	
+
 	/**
 	 * 
 	 * @return
@@ -29,7 +31,7 @@ public abstract class Shape {
 	public int getX() {
 		return x;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -37,7 +39,7 @@ public abstract class Shape {
 	public int getY() {
 		return y;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -45,5 +47,5 @@ public abstract class Shape {
 	public Color getColor() {
 		return c;
 	}
-	
+
 }

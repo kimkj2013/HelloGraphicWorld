@@ -4,7 +4,8 @@ import java.awt.Color;
 
 /**
  * 
- * @author kimk3
+ * 
+ * @author Kwangju Kim
  *
  */
 public class Circle extends Shape {
