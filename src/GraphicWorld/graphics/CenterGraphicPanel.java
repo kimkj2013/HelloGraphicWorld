@@ -148,7 +148,7 @@ public class CenterGraphicPanel extends JPanel {
 		super.paintComponent(g);
 
 		g.setColor(Color.LIGHT_GRAY);
-		g.drawString(new Point(mouseX, mouseY).toString(), mouseX, mouseY);
+		g.drawString(String.format("[%d,%d]", mouseX, mouseY), mouseX, mouseY);
 
 		for (Shape s : sl) {
 			if (flag)
@@ -212,10 +212,10 @@ public class CenterGraphicPanel extends JPanel {
 		ArrayList<Point> q = t.getPoints();
 
 		for (Point x : p) {
-			drawCircle(x.x, x.y, 10);
+			drawCircle(x.x, x.y, 7);
 		}
 		for (Point x : q) {
-			drawCircle(x.x, x.y, 10);
+			drawCircle(x.x, x.y, 7);
 		}
 		repaint();
 
