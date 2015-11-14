@@ -1,8 +1,15 @@
-# Hello Graphic World, 2015
+# Hello Graphic World
 
 Name: Kwangju Kim
+
 Grade: Junior
+
 Major: Computer Science
+
+Submitted in October 2015
+
+Exhibitted from January to May 2016
+
 Work Type: Java Applet
 
 ## Artist Statement
